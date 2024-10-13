@@ -12,7 +12,7 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      upload: true
+      upload-artifact: true
   
   push:
     runs-on:  ubuntu-latest
