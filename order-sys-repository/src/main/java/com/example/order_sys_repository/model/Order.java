@@ -1,11 +1,12 @@
-package com.example.order_service.model;
+package com.example.order_sys_repository.model;
 
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.order_service.constant.PaymentMethod;
+import com.example.order_sys_repository.constant.DeliveryStatus;
+import com.example.order_sys_repository.constant.PaymentMethod;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ public class Order {
     private String userId;
     private List<Item> items;
     private PaymentMethod paymentMethod;
+    private DeliveryStatus status;
 
     @Override
     public String toString() {

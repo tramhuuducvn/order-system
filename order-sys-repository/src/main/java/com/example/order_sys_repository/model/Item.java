@@ -1,4 +1,4 @@
-package com.example.order_service.model;
+package com.example.order_sys_repository.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

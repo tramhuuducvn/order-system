@@ -1,4 +1,4 @@
-package com.example.order_service.constant;
+package com.example.order_sys_repository.constant;
 
 public enum PaymentMethod {
     CASH,
