@@ -11,13 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        project:
-          - delivery-service
-          - inventory-service
-          - order-service
-          - payment-service
+    # strategy:
+    #   matrix:
+    #     project:
+    #       - delivery-service
+    #       - inventory-service
+    #       - order-service
+    #       - payment-service
 
     steps:
       - name: Checkout Code
@@ -28,7 +28,10 @@ jobs:
           java-version: "17"
           distribution: "zulu"
           cache: maven
-      - name: Build & Test
+      - name: Build with Maven
+        run: mvn -B install --file pom.xml
+
+      - name: Build Order Service
         run: |
-          cd ${{ matrix.project }}
+          cd order-service 
           mvn -B package --file pom.xml
