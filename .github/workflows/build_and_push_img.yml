@@ -23,9 +23,9 @@ jobs:
 
       - name: List Item
         run: |
-          eccho order-DIR && cd order-service/target && ls && cd ../../
-          eccho delivery-DIR && cd delivery-service/target && ls && cd ../../
-          eccho inventory-DIR && cd inventory-service/target && ls && cd ../../
+          echo order-DIR && cd order-service/target && ls && cd ../../
+          echo delivery-DIR && cd delivery-service/target && ls && cd ../../
+          echo inventory-DIR && cd inventory-service/target && ls && cd ../../
 
       - name: Download Jar Artifact
         uses: actions/download-artifact@v3
@@ -34,9 +34,9 @@ jobs:
 
       - name: List Item After Download
         run: |
-          eccho order-DIR && cd order-service/target && ls && cd ../../
-          eccho delivery-DIR && cd delivery-service/target && ls && cd ../../
-          eccho inventory-DIR && cd inventory-service/target && ls && cd ../../
+          echo order-DIR && cd order-service/target && ls && cd ../../
+          echo delivery-DIR && cd delivery-service/target && ls && cd ../../
+          echo inventory-DIR && cd inventory-service/target && ls && cd ../../
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
