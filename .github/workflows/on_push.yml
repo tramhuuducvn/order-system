@@ -9,4 +9,4 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/on_push.yml
+    uses: ./.github/workflows/build.yml
