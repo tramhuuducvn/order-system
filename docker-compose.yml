@@ -1,0 +1,62 @@
+version: '3.5'
+
+services:
+  order-service:
+    container_name: order-service-ctn
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    image: tramhuuducvn/order-service-img
+    ports:
+      - 8080:8080
+
+  inventory-service:
+    container_name: inventory-service-ctn
+    build:
+      context: ./inventory-service
+      dockerfile: Dockerfile
+    image: tramhuuducvn/inventory-service-img
+    ports:
+      - 8081:8081
+
+  delivery-service:
+    container_name: delivery-service-ctn
+    build:
+      context: ./delivery-service
+      dockerfile: Dockerfile
+    image: tramhuuducvn/delivery-service-img
+    ports:
+      - 8082:8082
+    # networks:
+    #   - spring-cloud-network
+    # volumes:
+    #   - /home/dobermann/temp/logs/java-app/:/logs/
+  
+  # grafana_agent:
+  #   image: grafana/agent
+  #   restart: always
+  #   volumes:
+  #     - ./grafana_agent.yml:/etc/agent-config/grafana_agent.yml
+  #     - /home/dobermann/temp/agent:/etc/agent
+  #     - /home/dobermann/temp/logs/java-app/:/tmp/logs/java-app/
+  #   entrypoint:
+  #     - /bin/grafana-agent
+  #     - -config.file=/etc/agent-config/grafana_agent.yml
+  #     - -metrics.wal-directory=/tmp/agent/wal
+  #     - -enable-features=integrations-next
+  #     - -config.expand-env
+  #     - -config.enable-read-api
+  #   ports:
+  #     - "3200:3200"
+  #   network_mode: "host"
+    # networks:
+    #   - spring-cloud-network
+  
+networks:
+  order-system-network:
+    name: order-system-network
+    driver: bridge
+
+# volumes:
+#   java-app:
+    
