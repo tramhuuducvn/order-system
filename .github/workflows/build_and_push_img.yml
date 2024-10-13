@@ -23,9 +23,9 @@ jobs:
 
       - name: List Item
         run: |
-          cd order-service/target && ls && cd ../../
-          cd delivery-service/target && ls && cd ../../
-          cd inventory-service/target && ls && cd ../../
+          cd order-service && ls && cd ../../
+          cd delivery-service && ls && cd ../../
+          cd inventory-service && ls && cd ../../
 
       - name: Download Jar Artifact
         uses: actions/download-artifact@v3
