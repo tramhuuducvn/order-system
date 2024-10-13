@@ -6,10 +6,10 @@ import com.example.order_sys_repository.constant.DeliveryStatus;
 import com.example.order_sys_repository.model.Delivery;
 import com.example.order_sys_repository.repository.DeliveryRepository;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DeliveryService {
     private DeliveryRepository repository;
 

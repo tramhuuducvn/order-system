@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.delivery_service.service.DeliveryService;
 import com.example.order_sys_repository.constant.DeliveryStatus;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/delivery")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DeliveryController {
 
     private DeliveryService service;
