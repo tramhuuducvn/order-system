@@ -20,3 +20,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn install
+
+      - name: Upload JAR files
+        uses: actions/upload-artifact@v3
+        with: 
+          name: order-system
+          path: |
+            ./order-service/target
+            ./inventory-service/target
+            ./delivery-service/target
+          retention-days: 3
+
