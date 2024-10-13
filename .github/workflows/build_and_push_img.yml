@@ -32,6 +32,12 @@ jobs:
         with:
           name: order-system
 
+      - name: List Item After Download
+        run: |
+          cd order-service && ls && cd ../
+          cd delivery-service && ls && cd ../
+          cd inventory-service && ls && cd ../
+
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
