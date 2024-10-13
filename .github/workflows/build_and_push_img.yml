@@ -1,4 +1,4 @@
-name: On Push Codex
+name: "Build & Push image to DockerHub"
 
 on:
   # push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    uses: ./on_push.yml
+    uses: ./.github/workflows/on_push.yml
   
   push:
     runs-on:  ubuntu-latest
