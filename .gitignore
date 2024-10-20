@@ -1,7 +1,5 @@
 */target/
 
-**/application.properties
-
 /terraform/.terraform/
 /terraform/**.backup
 /terraform/**.lock.hcl

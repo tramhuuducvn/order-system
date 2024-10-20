@@ -33,39 +33,3 @@ resource "azurerm_container_app_environment" "order_sys_ctn_app_environment" {
   location            = azurerm_resource_group.order_system_rg.location
   resource_group_name = azurerm_resource_group.order_system_rg.name
 }
-
-resource "azurerm_cosmosdb_account" "order_cosmosdb_account_name" {
-  name                       = var.cosmosdb_account_name
-  location                   = var.location
-  resource_group_name        = var.resource_group_name
-  offer_type                 = "Standard"
-  kind                       = "MongoDB"
-  automatic_failover_enabled = true
-
-  capabilities {
-    name = "EnableAggregationPipeline"
-  }
-
-  capabilities {
-    name = "mongoEnableDocLevelTTL"
-  }
-
-  capabilities {
-    name = "MongoDBv3.4"
-  }
-
-  capabilities {
-    name = "EnableMongo"
-  }
-
-  consistency_policy {
-    consistency_level       = "BoundedStaleness"
-    max_interval_in_seconds = 300
-    max_staleness_prefix    = 100000
-  }
-
-  geo_location {
-    location          = "eastus"
-    failover_priority = 0
-  }
-}

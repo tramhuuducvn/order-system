@@ -7,8 +7,14 @@ services:
       context: ./order-service
       dockerfile: Dockerfile
     image: tramhuuducvn/order-service-img
+    environment:
+      - PROFILE=dev
+      - DATABASE_NAME=value
+      - DATABASE_URL=value
     ports:
       - 8080:8080
+    networks:
+      - order-system-network
 
   inventory-service:
     container_name: inventory-service-ctn
@@ -18,6 +24,8 @@ services:
     image: tramhuuducvn/inventory-service-img
     ports:
       - 8081:8080
+    networks:
+      - order-system-network
 
   delivery-service:
     container_name: delivery-service-ctn
@@ -27,6 +35,8 @@ services:
     image: tramhuuducvn/delivery-service-img
     ports:
       - 8082:8080
+    networks:
+      - order-system-network
     # networks:
     #   - spring-cloud-network
     # volumes:
