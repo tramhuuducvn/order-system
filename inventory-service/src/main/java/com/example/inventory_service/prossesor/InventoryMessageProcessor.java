@@ -29,11 +29,17 @@ public class InventoryMessageProcessor {
         MessageContent content = MessageJsonUtil.object(message);
         switch (content.getAction()) {
             case CHECK_INVENTORY:
-                Order newOrder = content.getOrder();
-                newOrder.setStatus(DeliveryStatus.PREPARE_GOODS);
-                repository.save(newOrder);
-                ServiceBusSenderClient senderClient = sbClientProvider.getSender(sbNamespace, inventoryQueue);
-                senderClient.sendMessage(new ServiceBusMessage(json(newOrder, MessageAction.LETS_DELIVEY)));
+                try {
+                    Thread.sleep(5000);
+                    Order newOrder = content.getOrder();
+                    newOrder.setStatus(DeliveryStatus.PREPARE_GOODS);
+                    repository.save(newOrder);
+                    ServiceBusSenderClient senderClient = sbClientProvider.getSender(sbNamespace, inventoryQueue);
+                    senderClient.sendMessage(new ServiceBusMessage(json(newOrder, MessageAction.LETS_DELIVEY)));
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 break;
 
             default:

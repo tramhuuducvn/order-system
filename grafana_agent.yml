@@ -1,0 +1,54 @@
+server:
+  log_level: info
+logs:
+  configs:
+    - name: delivery-service
+      positions:
+        filename: /tmp/delivery-service-position.yaml
+      scrape_configs:
+        - job_name: delivery-service
+          static_configs:
+            - targets: [localhost]
+              labels:
+                job: delivery-service
+                __path__: "/tmp/logs/delivery-service/spring-boot-logger.log"
+      clients:
+        - url: http://localhost:3100/loki/api/v1/push
+          external_labels:
+            sys: order-system
+            svc: delivery-service
+          tenant_id: "1"
+
+    - name: inventory-service
+      positions:
+        filename: /tmp/inventory-service-position.yaml
+      scrape_configs:
+        - job_name: inventory-service
+          static_configs:
+            - targets: [localhost]
+              labels:
+                job: inventory-service
+                __path__: "/tmp/logs/inventory-service/spring-boot-logger.log"
+      clients:
+        - url: http://localhost:3100/loki/api/v1/push
+          external_labels:
+            sys: order-system
+            svc: inventory-service
+          tenant_id: "2"
+
+    - name: order-service
+      positions:
+        filename: /tmp/order-service-position.yaml
+      scrape_configs:
+        - job_name: order-service
+          static_configs:
+            - targets: [localhost]
+              labels:
+                job: order-service
+                __path__: "/tmp/logs/order-service/spring-boot-logger.log"
+      clients:
+        - url: http://localhost:3100/loki/api/v1/push
+          external_labels:
+            sys: order-system
+            svc: order-service
+          tenant_id: "3"

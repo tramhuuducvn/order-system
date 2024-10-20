@@ -20,9 +20,15 @@ public class DeliveryMessageProcessor {
         MessageContent content = MessageJsonUtil.object(message);
         switch (content.getAction()) {
             case LETS_DELIVEY:
-                Order newOrder = content.getOrder();
-                newOrder.setStatus(DeliveryStatus.DELIVERING);
-                repository.save(newOrder);
+                try {
+                    Thread.sleep(5000);
+                    Order newOrder = content.getOrder();
+                    newOrder.setStatus(DeliveryStatus.DELIVERING);
+                    repository.save(newOrder);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;
