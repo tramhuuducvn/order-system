@@ -80,12 +80,40 @@ jobs:
           push: true
           tags: tramhuuducvn/inventory-service-img
 
+      - name: Deploy Inventory Service
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az containerapp up \
+            --name "order-service-application" \
+            --resource-group "order-system" \
+            --location "East US 2" \
+            --environment "order-sys-environment" \
+            --artifact "./order-service/target/order-service.jar" \
+            --subscription "${{secrets.AZURE_SUBSCRIPTION_ID}}" \
+            --env-vars "DATABASE_NAME=order-sys-cosmosdb-account" "DATABASE_URL=${{secrets.DATABASE_URL}}" "AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING=${{secrets.AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING}}" "AZURE_SERVICEBUS_NAMESPACE=ordersyssvcbusnamespace" "AZURE_SERVICEBUS_QUEUE_NAME=inventory_queue"
+
       - name: Build & Push Delivery to DockerHub
         uses: docker/build-push-action@v3
         with: 
           context: ./delivery-service
           push: true
           tags: tramhuuducvn/delivery-service-img
+
+      - name: Deploy Delivery Service
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az containerapp up \
+            --name "order-service-application" \
+            --resource-group "order-system" \
+            --location "East US 2" \
+            --environment "order-sys-environment" \
+            --artifact "./order-service/target/order-service.jar" \
+            --subscription "${{secrets.AZURE_SUBSCRIPTION_ID}}" \
+            --env-vars "DATABASE_NAME=order-sys-cosmosdb-account" "DATABASE_URL=${{secrets.DATABASE_URL}}" "AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING=${{secrets.AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING}}" "AZURE_SERVICEBUS_NAMESPACE=ordersyssvcbusnamespace" "AZURE_SERVICEBUS_QUEUE_NAME=delivery_queue"
   
   
   
