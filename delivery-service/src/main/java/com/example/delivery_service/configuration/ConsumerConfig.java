@@ -1,4 +1,4 @@
-package com.example.inventory_service.configuration;
+package com.example.delivery_service.configuration;
 
 import java.util.function.Consumer;
 
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 
 import com.azure.spring.messaging.checkpoint.Checkpointer;
-import com.example.inventory_service.prossesor.InventoryMessageProcessor;
+import com.example.delivery_service.prossesor.DeliveryMessageProcessor;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import static com.azure.spring.messaging.AzureHeaders.CHECKPOINTER;
 @AllArgsConstructor
 public class ConsumerConfig {
 
-  private InventoryMessageProcessor processor;
+  private DeliveryMessageProcessor processor;
 
   @Bean
   public Consumer<Message<String>> consume() {
