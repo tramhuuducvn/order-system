@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     image: tramhuuducvn/inventory-service-img
     ports:
-      - 8081:8081
+      - 8081:8080
 
   delivery-service:
     container_name: delivery-service-ctn
@@ -26,7 +26,7 @@ services:
       dockerfile: Dockerfile
     image: tramhuuducvn/delivery-service-img
     ports:
-      - 8082:8082
+      - 8082:8080
     # networks:
     #   - spring-cloud-network
     # volumes:

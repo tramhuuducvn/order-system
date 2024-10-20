@@ -1,4 +1,8 @@
 */target/
+
 **/application.properties
 
-./terraform/.terraform/
+/terraform/.terraform/
+/terraform/**.backup
+/terraform/**.lock.hcl
+/terraform/**.tfstate
