@@ -20,8 +20,17 @@ jobs:
       - name: Azure CLI script
         uses: azure/cli@v2
         with:
-          azcliversion: "2.65.0-azurelinux3.0-amd64"
+          azcliversion: "2.9.1"
           inlineScript: |
             az --version |
             az extension add --name containerapp --allow-preview true |
             az containerapp up --help 
+
+      - name: Azure CLI script
+        uses: azure/cli@v2
+        with:
+            azcliversion: "azurelinux3.0"
+            inlineScript: |
+                az --version |
+                az extension add --name containerapp --allow-preview true |
+                az containerapp up --help 
