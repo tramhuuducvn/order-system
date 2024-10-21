@@ -68,8 +68,7 @@ jobs:
         with:
           azcliversion: 2.65.0
           inlineScript: |
-            az --version |
-            az extension add --name containerapp --upgrade |
+            az extension add --name containerapp --allow-preview true |
             az containerapp up \
               --name "order-service-application" \
               --resource-group "order-system" \
