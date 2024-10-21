@@ -80,9 +80,9 @@ jobs:
       - name: Deploy Order Service
         uses: azure/cli@v2
         with:
-          azcliversion: "2.65.0-azurelinux3.0-amd64"
+          azcliversion: latest
           inlineScript: |
-            az extension add --name containerapp --allow-preview true |
+            az containerapp up --help |
             az containerapp up \
               --name "order-service-application" \
               --resource-group "order-system" \
@@ -98,7 +98,7 @@ jobs:
       - name: Deploy Inventory Service
         uses: azure/cli@v2
         with:
-          azcliversion: 2.65.0
+          azcliversion: latest
           inlineScript: |
             az containerapp up \
               --name "inventory-service-application" \
@@ -115,7 +115,7 @@ jobs:
       - name: Deploy Delivery Service
         uses: azure/cli@v2
         with:
-          azcliversion: 2.65.0
+          azcliversion: latest
           inlineScript: |
             az containerapp up \
               --name "delivery-service-application" \
