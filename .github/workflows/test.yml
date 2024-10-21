@@ -23,5 +23,5 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az --version |
-            az containerapp up --help |
-            az extension add --name containerapp --allow-preview true
+            az extension add --name containerapp --allow-preview true |
+            az containerapp up --help 
