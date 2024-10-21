@@ -66,7 +66,7 @@ jobs:
       - name: Deploy Order Service
         uses: azure/cli@v2
         with:
-          azcliversion: 2.65.0
+          azcliversion: "2.65.0-azurelinux3.0-amd64"
           inlineScript: |
             az extension add --name containerapp --allow-preview true |
             az containerapp up \
