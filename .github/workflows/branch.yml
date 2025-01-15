@@ -13,23 +13,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: "17"
-          distribution: "zulu"
-          cache: maven
-
-      - name: Build with Maven
-        run: mvn install
-
-      - name: Upload JAR files
-        uses: actions/upload-artifact@v3
-        if: ${{inputs.upload-artifact == true}}
-        with:
-          name: order-system
-          path: |
-            ./order-service/target
-            ./inventory-service/target
-            ./delivery-service/target
-          retention-days: 3
+      - name: Export secret
+        shell: bash
+        run: |
+          echo AZURE_CLIENT_ID is ${{secrets.AZURE_CLIENT_ID}} 
+          export AZURE_CLIENT_ID=${{secrets.AZURE_CLIENT_ID}}
+          echo AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING is ${{secrets.AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING}} 
+          export AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING=${{secrets.AZURE_SERVICEBUS_NAMESPACE_CONNECTION_STRING}}
