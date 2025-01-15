@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - "**"
-  workflow_call:
-    inputs:
-      upload-artifact:
-        required: false
-        type: boolean
-        default: false
 
 jobs:
   build:
