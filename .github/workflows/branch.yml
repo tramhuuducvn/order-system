@@ -20,7 +20,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: ${{ inputs.use_environment }}
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -28,8 +27,8 @@ jobs:
       - name: Export secret
         shell: bash
         run: |
-          export USERNAME=${{env.USERNAME}}
-          echo username is ${{env.USERNAME}}
+          export USERNAME=${{secrets.USERNAME}}
+          echo username is ${{secrets.USERNAME}}
           echo $USERNAME
           export AZURE_CLIENT_ID=${{secrets.AZURE_CLIENT_ID}}
           echo AZURE_CLIENT_ID is ${{secrets.AZURE_CLIENT_ID}} 
