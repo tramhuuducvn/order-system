@@ -27,6 +27,7 @@ jobs:
       - name: Export secret
         shell: bash
         run: |
+          echo ENV is ${{ inputs.use_environment }}
           export USERNAME=${{secrets.USERNAME}}
           echo username is ${{secrets.USERNAME}}
           echo $USERNAME
