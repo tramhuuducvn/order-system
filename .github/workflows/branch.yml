@@ -4,10 +4,22 @@ on:
   push:
     branches:
       - "**"
+  workflow_dispatch:
+    inputs:
+      use_environment:
+        description: "Environment in which the application will be deployed."
+        required: true
+        type: choice
+        options:
+          - dev
+          - qa
+          - non-prod
+          - prod
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.use_environment }}
 
     steps:
       - name: Checkout Code
@@ -16,6 +28,9 @@ jobs:
       - name: Export secret
         shell: bash
         run: |
+          export USERNAME=${{env.USERNAME}}
+          echo username is ${{env.USERNAME}}
+          echo $USERNAME
           export AZURE_CLIENT_ID=${{secrets.AZURE_CLIENT_ID}}
           echo AZURE_CLIENT_ID is ${{secrets.AZURE_CLIENT_ID}} 
           echo $AZURE_CLIENT_ID
