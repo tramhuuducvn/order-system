@@ -8,8 +8,8 @@ on:
     inputs:
       use_environment:
         description: "Environment in which the application will be deployed."
-        required: true
         type: choice
+        default: qa
         options:
           - dev
           - qa
